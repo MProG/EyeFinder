@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem "paperclip", "~> 4.3"
+gem 'rmagick'
 gem 'cells', "~> 4.0.0"
 gem 'cells-slim'
 
