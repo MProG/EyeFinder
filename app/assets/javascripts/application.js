@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require bootstrap-sprockets
+//= require webcam.min
 //= require_tree .
-
-$(document).foundation();
