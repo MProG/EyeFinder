@@ -15,9 +15,3 @@
 //= require bootstrap-sprockets
 //= require webcam.min
 //= require_tree .
-
-function take_photo() {
-    var data_uri = Webcam.snap( function(data_uri) {
-        document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
-    });
-}

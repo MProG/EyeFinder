@@ -12,3 +12,7 @@ $ ->
 
     Webcam.attach('#web_cam')
 
+    $('.submit').on 'click', () ->
+        Webcam.snap (data_uri) ->
+            document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>'
+
