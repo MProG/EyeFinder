@@ -4,16 +4,19 @@ include Magick
 class Filters::MedianFilter
   def filtred
     img = ImageList.new("helena.jpg").first
+    r, g, b = 0, 0, 0
+    a = ImageList.new("helena.jpg").first
     img.rows.times do |y|
       img.columns.times do |x|
-        R = to_8x(pixel_color(x, y).red)
-        G = to_8x(pixel_color(x, y).red)
-        B = to_8x(pixel_color(x, y).red)
-        pixel = Pixel.new(to_16x(R), to_16x(G), to_16x(B))
+        r = to_8x(img.pixel_color(x, y).red)
+        g = to_8x(img.pixel_color(x, y).red)
+        b = to_8x(img.pixel_color(x, y).red)
+        pixel = Pixel.new(to_16x(r), to_16x(g), to_16x(b))
         img.pixel_color(x, y, pixel)
       end
     end
-
+    a.display
+    img.display
   end
 
   def to_8x(value)
