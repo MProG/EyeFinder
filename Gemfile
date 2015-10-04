@@ -14,7 +14,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

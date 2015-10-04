@@ -14,5 +14,5 @@ $ ->
 
     $('.submit').on 'click', () ->
         Webcam.snap (data_uri) ->
-            document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>'
-
+            Webcam.upload data_uri, '/process', (code, text) ->
+                document.getElementById('results').innerHTML = text
