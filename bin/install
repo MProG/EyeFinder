@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+# Add binstubs to PATH in ~/.zshrc:
+#   export PATH=".git/safe/../../bin:$PATH"
+mkdir -p .git/safe
+
+bundle install --path vendor/bundle
+
+set +e
+
+echo "Try to setup application with default configs... "
+
+bundle exec rake db:create
+
+if ((! $? == 0 )); then
+  echo "Fail."
+  echo "Please edit configs and start bin/bootstrap again."
+  exit $?
+else
+  echo "Success."
+fi
