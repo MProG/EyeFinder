@@ -8,7 +8,7 @@ class PhotoController < ApplicationController
     file = params["webcam"].tempfile
     photo.update(file: file)
 
-    render html: "<img src=\"#{photo.file.url}\">".html_safe, layout: false
+    render html: "<img class=\"wide\" src=\"#{photo.file.url}\">".html_safe, layout: false
   end
 
   private
