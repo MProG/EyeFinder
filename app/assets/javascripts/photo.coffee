@@ -6,7 +6,7 @@ $ ->
     Webcam.set({
         width: 320,
         height: 240,
-        image_format: 'jpeg',
+        image_format: 'png',
         jpeg_quality: 90
     })
 

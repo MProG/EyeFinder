@@ -16,6 +16,7 @@ gem "paperclip", "~> 4.3"
 gem 'rmagick'
 gem 'cells', "~> 4.0.0"
 gem 'cells-slim'
+gem 'chunky_png'
 
 group :development, :test do
   gem 'pry-byebug'
