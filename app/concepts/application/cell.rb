@@ -7,4 +7,5 @@ class Application::Cell < Cell::Concept
   include ActionView::Helpers::FormHelper
   include ActionView::Helpers::FormOptionsHelper
   include ActionView::Helpers::AssetTagHelper
+  include SimpleForm::ActionViewExtensions::FormHelper
 end

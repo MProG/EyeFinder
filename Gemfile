@@ -17,6 +17,7 @@ gem 'rmagick'
 gem 'cells', "~> 4.0.0"
 gem 'cells-slim'
 gem 'chunky_png'
+gem 'simple_form'
 
 group :development, :test do
   gem 'pry-byebug'
