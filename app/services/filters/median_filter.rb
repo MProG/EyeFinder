@@ -1,29 +1,28 @@
-require 'RMagick'
-include Magick
-
 class Filters::MedianFilter
-  def filtred
-    img = ImageList.new("helena.jpg").first
-    r, g, b = 0, 0, 0
-    a = ImageList.new("helena.jpg").first
-    img.rows.times do |y|
-      img.columns.times do |x|
-        r = to_8x(img.pixel_color(x, y).red)
-        g = to_8x(img.pixel_color(x, y).green)
-        b = to_8x(img.pixel_color(x, y).blue)
-        pixel = Pixel.new(to_16x(r), to_16x(g), to_16x(b))
-        img.pixel_color(x, y, pixel)
+
+  def filtred(img=false)
+    if img
+    png = ChunkyPNG::Image.new(img.width, img.height, ChunkyPNG::Color::TRANSPARENT)
+
+    img.height.times do |y|
+      img.width.times do |x|
+        png[x,y] = get_midle(x,y, img)
       end
     end
-    a.display
-    img.display
+    png
   end
 
-  def to_8x(value)
-    value & 255
-  end
-
-  def to_16x(value)
-    value * 255
+  def get_midle(x,y, img)
+    arr = []
+    3.times do |x_off|
+      3.times do |y_off|
+        begin
+          arr << img[x+1-x_off,y+1-y_off]
+        rescue
+          arr << 0
+        end
+      end
+    end
+    arr.sort[4]
   end
 end
