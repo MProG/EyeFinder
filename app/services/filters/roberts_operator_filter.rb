@@ -1,4 +1,4 @@
-class Filters::MedianFilter
+class Filters::RobertsOperatorFilter
 
   def filtred(img=false)
     if img
@@ -14,16 +14,12 @@ class Filters::MedianFilter
   end
 
   def get_midle(x,y, img)
-    arr = []
-    3.times do |x_off|
-      3.times do |y_off|
-        begin
-          arr << img[x+1-x_off,y+1-y_off]
-        rescue
-          arr << 0
-        end
-      end
+    begin
+      tmp1 = (img[x,y] - img[x+1, y+1]).abs
+      tmp2 = (img[x+1,y] - img[x, y+1]).abs
+      Math.sqrt(tmp1**2+tmp2**2)
+    rescue
+      0
     end
-    arr.sort[4]
   end
 end
