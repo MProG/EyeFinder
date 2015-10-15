@@ -17,7 +17,7 @@ class Filters::RobertsOperatorFilter
     begin
       tmp1 = (img[x,y] - img[x+1, y+1]).abs
       tmp2 = (img[x+1,y] - img[x, y+1]).abs
-      Math.sqrt(tmp1**2+tmp2**2)
+      Math.sqrt(tmp1**2+tmp2**2).to_i
     rescue
       0
     end
