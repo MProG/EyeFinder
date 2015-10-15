@@ -11,7 +11,7 @@ class ChangeImageService
     #     array[x,y] = ChunkyPNG::Color.rgb(0, 0, currentBlue)
     #   end
     # end
-    img = Filters::MedianFilter.new.filtred(array)
+    img = Filters::MedianFilter.new.filtred(img)
 
     img.save(model.file.path)
   end
