@@ -14,16 +14,34 @@ class Filters::MedianFilter
   end
 
   def get_midle(x,y, img)
-    arr = []
+    rez = {}
+    arr_r = []
+    arr_g = []
+    arr_b = []
+
     3.times do |x_off|
       3.times do |y_off|
         begin
-          arr << img[x+1-x_off,y+1-y_off]
+          pixel = to_rgb(img[x+1-x_off,y+1-y_off])
+          arr_r << (pixel[:R])
+          arr_g << (pixel[:G])
+          arr_b << (pixel[:B])
         rescue
-          arr << 0
+          arr_r << 0
+          arr_g << 0
+          arr_b << 0
         end
       end
     end
-    arr.sort[4]
+
+    ChunkyPNG::Color.rgb(arr_r.sort[4], arr_g.sort[4], arr_b.sort[4])
+  end
+
+  def to_rgb(pixel)
+    arr = {}
+    arr[:R] = ChunkyPNG::Color.r(pixel)
+    arr[:G] = ChunkyPNG::Color.g(pixel)
+    arr[:B] = ChunkyPNG::Color.b(pixel)
+    arr    
   end
 end
